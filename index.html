@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Display current date and time</title>
+    <style>
+        body{
+            font-family: "Helvetica, Arial, sans-serif";
+        }
+        div#date{
+            font-size: 40px;
+            padding:20px;
+        }
+        
+        div#time{
+            font-size:20vw;
+            padding: 20px;
+        }
+
+        section#head{
+            padding:30px;
+            position:relative;
+            height: 80px;
+        }
+        
+        section#datetime{
+            padding:30px;
+            text-align: center;
+        }
+
+        img#kmitl{
+            width:200px;
+            position:absolute;
+            top:-30px;
+            left:30px;
+        }
+
+        img#kmitl-eng{
+            width:200px;
+            position:absolute;
+            top:-50px;
+            right:30px;
+        }
+        
+
+        footer{
+            text-align: center;
+            position: absolute;
+            bottom: 0px;
+            background-color: gainsboro;
+            padding:20px;
+            width:100%;
+            font-size: 20pt;
+        }
+    </style>
+  </head>
+  <body>
+    <section id="head">
+        <img id="kmitl" src="https://engineer.kmitl.ac.th/wp-content/uploads/2023/10/logo02.png" alt="KMITL"/> 
+        <img id="kmitl-eng" src="https://engineer.kmitl.ac.th/wp-content/uploads/2023/10/logo01-1.png" alt="School of Engineering"/>
+    </section>
+    <section id="datetime">
+        <div id="date"></div>
+        <div id="time"></div>
+    </section>
+    
+    <footer>
+        by SAIG Lab, Computer Engineering, KMITL
+    </footer>
+
+    <script>
+      // create a function to update the date and time
+      function updateDateTime() {
+        // create a new `Date` object
+        const now = new Date();
+
+        // get the current date and time as a string
+        //const currentDateTime = now.toLocaleString();
+        const currentDate = now.toLocaleDateString("en-EN", {  year: 'numeric', month: 'long', day: 'numeric', weekday: 'long',})
+        const currentTime = now.toLocaleTimeString("th-TH");
+
+        // update the `textContent` property of the `span` element with the `id` of `datetime`
+        document.querySelector('#date').textContent = currentDate;
+        document.querySelector('#time').textContent = currentTime;
+      }
+
+      // call the `updateDateTime` function every second
+      setInterval(updateDateTime, 1000);
+    </script>
+
+
+  </body>
+</html>
